@@ -3,6 +3,7 @@ from tkinter import Y
 import datetime as dt
 from dateutil.tz import gettz
 from turtle import *
+# @programnm
 def slow_type(x, y):
     typing_speed = y
     for l in x:
