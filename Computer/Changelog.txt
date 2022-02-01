@@ -1,0 +1,78 @@
+computer of programs
+Ver. 0.1 The Calculator Update
+-made calculator
+-added loops
+-added bidmas to calculator
+-fixed ifs loops (not able to exit calculator)
+Ver. 0.1.1 The Beta Program Upgrade
+-renamed file
+-imported turtle and slow_text
+-added password
+-made paint
+-made exit
+-looped the whole thing
+Ver. 0.1.2 The Beta (Official) Program Update
+-added users to password
+-fixed paint (bug of unable to exit paint)
+-made games
+-added riddles to games
+-made other programs
+Ver. 0.1.3 The Adventure Mini-Upgrade
+-added adventure game to games
+-fixed and added more to script
+Ver. 0.1.4 The Time for Hotfixes Upgrade
+-made datetime
+-hotfixes
+
+Ver. 0.2 The Polishing of the Program Update
+-tweaked calculator (floats)
+-tweaked games (loop)
+-made settings
+-tweaked riddles (working)
+Ver. 0.2.1 The Reorganization Hotfixes
+-renamed file
+-defined most of the commands to stop repetitive commands
+
+Breath of Fresh Air Updates
+Ver. 0.2.2 The Breath of Fresh Air Upgrade PART 1
+-tweaked paint to make user-friendly
+-made TicTacToe two player
+-made it executable both MacOS and Windows 
+Ver. 0.2.3 The Breath of Fresh Air Upgrade PART 2
+-extended the ui of TicTacToe
+-finished adventure game's script
+-finished riddles
+Ver. 0.2.4 The Polishing of The Breath of Fresh Air Upgrade PART 3
+-polished adventure game
+-polished riddles
+-added AI to TicTacToe
+
+New Era
+Ver. 0.3 The Multi-Interaction Update
+-made Multiplayer to TicTacToe
+Ver. 0.3.1 The Other Saving Settings Update
+-added more to settings
+-made settings able to save
+-made calculator's numbers able to save
+-
+Ver. 0.3.2
+-
+Ver. 0.3.3
+-
+Ver. 0.3.4
+
+Multi-Media
+Ver. 0.4 The Multi-Media Program Upgrade (Overhaul) PART 1
+-made interface
+Ver. 0.4.1 The Multi-Media Update (Media) PART 2
+-added sound effects to program
+-allows to play music in the program
+Ver. 0.4.2 The Multi-Media Update (Video) PART 3
+
+Ver. 0.4.3 The Multi-Media Update (Internet) PART 4
+-allows search for the internet 
+Ver. 0.4.4 The Multi-Media Update (Fixer-Upper) PART 5
+
+
+
+Ver. 1.0 The Padded Update
