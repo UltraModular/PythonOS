@@ -32,6 +32,9 @@ Ver. 0.2 The Polishing of the Program Update
 Ver. 0.2.1 The Reorganization Hotfixes
 -renamed file
 -defined most of the commands to stop repetitive commands
+-fixed calculator
+-able to reuse numbers when looped
+-0.2 tweaked calculator didnt work
 
 Breath of Fresh Air Updates
 Ver. 0.2.2 The Breath of Fresh Air Upgrade PART 1

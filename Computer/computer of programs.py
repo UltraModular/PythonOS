@@ -10,11 +10,6 @@ def slow_type(x, y):
         sys.stdout.write(l)
         sys.stdout.flush()
         time.sleep(random.random()*10.0/typing_speed)
-def iof(x, y):
-    y = isinstance(x, float)
-    if y != True:
-        int(x)
-    else: float(x)
 def riddled(x, y, z):
     if riddlechooser == x:
         riddleanswer1 = (y)
@@ -51,11 +46,11 @@ while userinterface not in ["guest", "Guest", "Ian", "ian"]:
     if userinterface in ["Guest", "guest"]:
         print("Welcome!")
     elif userinterface not in ["guest", "Guest", "Ian", "ian"]:
-     print("There is no user called "+userinterface+".")
+        print(f"There is no user called {userinterface}")
 while True:
     if datatime == False:
         ddatatime = dt.datetime.now(gettz('Australia/Melbourne'))
-        print("Today is " + f"{ddatatime:%D %A %I:%M %p}.")
+        print("Today is " + f"{ddatatime:%D %A %I:%M %p}")
         datatime = True
     print("Which program? \n1. Calculator \n2. PaintINDEV \n3. GamesIndev \n4. Other ProgramsINDev \nExit?")
     program = input()
@@ -64,32 +59,25 @@ while True:
         # Improvements: finished
         print("Hello this is a calculator")
         loop = int(input("How many times you want to loop the program? "))
+        calnum1 = float(input("Put the first number here \n"))
         for i in range(loop):
-            calnum1 = input("Put the first number here \n")
-            calnum11 = calnum1
-            iof(calnum1, calnum11)
-            calnum2 = input("Put the second number here \n")
-            calnum21 = calnum2
-            iof(calnum2, calnum21)
             choice = input("Which mathmatical symbol? \n(+ = 1, - = 2, x = 3, / = 4) \n")
+            calnum2 = float(input("Put the second number here \n"))
             if choice in ["1", "+"]:
-                print('{}+{} = '.format(calnum1, calnum2))
                 sum = calnum1 + calnum2
+                print(f'{calnum1} + {calnum2} = {sum}')
             elif choice in ["2", "-"]:
-                print('{}-{} = '.format(calnum1, calnum2))
                 sum = calnum1 - calnum2
+                print(f'{calnum1} - {calnum2} = {sum}')
             elif choice in ["3", "*", "x"]:
-                print('{}*{} = '.format(calnum1, calnum2))
                 sum = calnum1 * calnum2
+                print(f'{calnum1} * {calnum2} = {sum}')
             elif choice in ["4", "/"]:
-                print ('{}/{} = '.format(calnum1, calnum2))
                 sum = calnum1 / calnum2
+                print (f'{calnum1} / {calnum2} = {sum}')
             else:
                 print("um put the right numbers next time")
                 break
-            sum1 = sum
-            iof(sum,sum1)
-            print(sum)
             loop = loop - 1
             if loop == 0:
                 break
@@ -97,8 +85,9 @@ while True:
                 choice2 = input("Are you done with your calculations? (Y/N) ")
                 if choice2 == "yes":
                     break
-                else: print("Amount of loops left:")
-                print(loop)
+                else: 
+                    print(f"Amount of loops left: {loop}")
+                    calnum1 = sum
     elif program in ["paint", "2"]:
         # Paint
         # Improvements: pen is finished
@@ -357,5 +346,5 @@ while True:
     elif program in ["shut down", "5", "quit", "stop"]:
         #Quits
         break
-    else: print("I'm sorry. I do not understand this command: {}".format(program))
+    else: print(f"I'm sorry. I do not understand this command: {program}")
 print("Goodbye!")
