@@ -35,6 +35,8 @@ Ver. 0.2.1 The Reorganization Hotfixes
 -fixed calculator
 -able to reuse numbers when looped
 -0.2 tweaked calculator didnt work
+-dt settings
+-dt rerouted
 
 Breath of Fresh Air Updates
 Ver. 0.2.2 The Breath of Fresh Air Upgrade PART 1

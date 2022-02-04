@@ -39,6 +39,7 @@ IanOS3 = ("Booting up IanOS... \n")
 slow_type((IanOS1 + IanOS2 + IanOS3) * 3, 500)
 print("Welcome!")
 datatime = False
+datatimesettings1 = False
 userinterface = ""
 while userinterface not in ["guest", "Guest", "Ian", "ian"]:
     userinterface = input("\nWhich user? \nIan \nGuest \n")
@@ -50,8 +51,10 @@ while userinterface not in ["guest", "Guest", "Ian", "ian"]:
 while True:
     if datatime == False:
         ddatatime = dt.datetime.now(gettz('Australia/Melbourne'))
-        print("Today is " + f"{ddatatime:%D %A %I:%M %p}")
-        datatime = True
+        dddatatime = f"Today is {ddatatime:%D %A %I:%M %p}"
+        print(dddatatime)
+        if datatimesettings1 != True: 
+            datatime = True
     print("Which program? \n1. Calculator \n2. PaintINDEV \n3. GamesIndev \n4. Other ProgramsINDev \nExit?")
     program = input()
     if program in ["calculator", "1"]:
@@ -342,7 +345,15 @@ while True:
         if inputprogram in ["1"]:
             input()
     elif program in ["settings", "4"]:
-        print("What settings?")
+        settings = print("What settings?")
+        if settings in ["time"]:
+            settingsdt = print("What do you want to change?")
+            if settingsdt in ["datatime"]:
+                datatimesettings1 = True
+            elif settingsdt in ["exit", "Exit"]:
+                break
+        if settings in ["Help", "help"]:
+            print("dt: sets the time of the computer")
     elif program in ["shut down", "5", "quit", "stop"]:
         #Quits
         break
