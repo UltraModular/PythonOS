@@ -10,6 +10,11 @@ def slow_type(x, y):
         sys.stdout.write(l)
         sys.stdout.flush()
         time.sleep(random.random()*10.0/typing_speed)
+def iof(x, y):
+    y = isinstance(x, float)
+    if y != True:
+        int(x)
+    else: float(x)
 def riddled(x, y, z):
     if riddlechooser == x:
         riddleanswer1 = (y)
@@ -39,7 +44,6 @@ IanOS3 = ("Booting up IanOS... \n")
 slow_type((IanOS1 + IanOS2 + IanOS3) * 3, 500)
 print("Welcome!")
 datatime = False
-datatimesettings1 = False
 userinterface = ""
 while userinterface not in ["guest", "Guest", "Ian", "ian"]:
     userinterface = input("\nWhich user? \nIan \nGuest \n")
@@ -47,14 +51,12 @@ while userinterface not in ["guest", "Guest", "Ian", "ian"]:
     if userinterface in ["Guest", "guest"]:
         print("Welcome!")
     elif userinterface not in ["guest", "Guest", "Ian", "ian"]:
-        print(f"There is no user called {userinterface}")
+     print("There is no user called "+userinterface+".")
 while True:
     if datatime == False:
         ddatatime = dt.datetime.now(gettz('Australia/Melbourne'))
-        dddatatime = f"Today is {ddatatime:%D %A %I:%M %p}"
-        print(dddatatime)
-        if datatimesettings1 != True: 
-            datatime = True
+        print("Today is " + f"{ddatatime:%D %A %I:%M %p}.")
+        datatime = True
     print("Which program? \n1. Calculator \n2. PaintINDEV \n3. GamesIndev \n4. Other ProgramsINDev \nExit?")
     program = input()
     if program in ["calculator", "1"]:
@@ -62,25 +64,32 @@ while True:
         # Improvements: finished
         print("Hello this is a calculator")
         loop = int(input("How many times you want to loop the program? "))
-        calnum1 = float(input("Put the first number here \n"))
         for i in range(loop):
+            calnum1 = input("Put the first number here \n")
+            calnum11 = calnum1
+            iof(calnum1, calnum11)
+            calnum2 = input("Put the second number here \n")
+            calnum21 = calnum2
+            iof(calnum2, calnum21)
             choice = input("Which mathmatical symbol? \n(+ = 1, - = 2, x = 3, / = 4) \n")
-            calnum2 = float(input("Put the second number here \n"))
             if choice in ["1", "+"]:
+                print('{}+{} = '.format(calnum1, calnum2))
                 sum = calnum1 + calnum2
-                print(f'{calnum1} + {calnum2} = {sum}')
             elif choice in ["2", "-"]:
+                print('{}-{} = '.format(calnum1, calnum2))
                 sum = calnum1 - calnum2
-                print(f'{calnum1} - {calnum2} = {sum}')
             elif choice in ["3", "*", "x"]:
+                print('{}*{} = '.format(calnum1, calnum2))
                 sum = calnum1 * calnum2
-                print(f'{calnum1} * {calnum2} = {sum}')
             elif choice in ["4", "/"]:
+                print ('{}/{} = '.format(calnum1, calnum2))
                 sum = calnum1 / calnum2
-                print (f'{calnum1} / {calnum2} = {sum}')
             else:
                 print("um put the right numbers next time")
                 break
+            sum1 = sum
+            iof(sum,sum1)
+            print(sum)
             loop = loop - 1
             if loop == 0:
                 break
@@ -88,9 +97,8 @@ while True:
                 choice2 = input("Are you done with your calculations? (Y/N) ")
                 if choice2 == "yes":
                     break
-                else: 
-                    print(f"Amount of loops left: {loop}")
-                    calnum1 = sum
+                else: print("Amount of loops left:")
+                print(loop)
     elif program in ["paint", "2"]:
         # Paint
         # Improvements: pen is finished
@@ -159,10 +167,12 @@ while True:
                         if riddleyn in ['no', 'n']: 
                             print("Okay, see you later!")
                             break
-            if gameinput == 2:
+            if gameinput == 2:  
                 print('Welcome to Tic Tac Toe!')
                 tttinput1 = input('1. Single Player\n2.Multiplayer\n')
                 if tttinput1 in ['Single Player', 'single player', '1']:
+                    print("p1 turn")
+                    input("123456789")
                     tttinput = input("Easy, Medium, Hard, Impossible? \nDifficulty: ")
                     if tttinput in ["impossible", "Impossible"]:
                         print()
@@ -345,17 +355,9 @@ while True:
         if inputprogram in ["1"]:
             input()
     elif program in ["settings", "4"]:
-        settings = print("What settings?")
-        if settings in ["time"]:
-            settingsdt = print("What do you want to change?")
-            if settingsdt in ["datatime"]:
-                datatimesettings1 = True
-            elif settingsdt in ["exit", "Exit"]:
-                break
-        if settings in ["Help", "help"]:
-            print("dt: sets the time of the computer")
+        print("What settings?")
     elif program in ["shut down", "5", "quit", "stop"]:
         #Quits
         break
-    else: print(f"I'm sorry. I do not understand this command: {program}")
+    else: print("I'm sorry. I do not understand this command: {}".format(program))
 print("Goodbye!")
