@@ -167,3 +167,4 @@ while turns < 9:
     if turns == 9:
         print("Tie!")
     user = not user
+# adrian did u copy this?
