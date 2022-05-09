@@ -41,8 +41,9 @@ Ver. 0.2.1 The Reorganization Hotfixes
 Breath of Fresh Air Updates
 Ver. 0.2.2 The Breath of Fresh Air Upgrade PART 1
 -tweaked paint to make user-friendly
--made TicTacToe two player
--made it executable both MacOS and Windows 
+-added TicTacToe two player
+-made it executable both MacOS and Windows
+-added more math programs: percentage calculator and exponent calculator
 Ver. 0.2.3 The Breath of Fresh Air Upgrade PART 2
 -extended the ui of TicTacToe
 -finished adventure game's script

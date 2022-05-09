@@ -1,4 +1,5 @@
 import sys,time,random,turtle
+from tokenize import Exponent
 from tkinter import Y
 import datetime as dt
 from dateutil.tz import gettz
@@ -91,9 +92,18 @@ while True:
                             print(f"Amount of loops left: {loop}")
                             calnum1 = sum
             if mathcheck in ["Percentage", "%"]:
-                input("Welcome to the Percentage Calculator!\nHere, we check how much is a percentage of one another")
+                ppart = int(input("Welcome to the Percentage Calculator!\nHere, we check how much is a percentage of one another.\nx of %y\nWhat is x?:"))
+                pwhole = int(input(f"{ppart} of %"))
+                print(100 * float(ppart)/float(pwhole))
+                
             if mathcheck in ["Square", "Exponent"]:
-                input("Welcome to the Squ")
+                print("Welcome to the Exponent Calculator.")
+                number12 = int(input("What is your number? "))
+                exponent = int(input("To the power of "))
+                print()
+                choice2 = input("Are you done with your calculations? (Y/N) ")
+                if choice2 == "yes":
+                    break
     elif program in ["Paint", "2"]:
         # Paint
         # Improvements: pen is finished
@@ -178,31 +188,38 @@ while True:
                 if tttinput1 in ['Single Player', 'single player', '1']:
                     tttinput = input("Easy, Medium, Hard, Impossible? \nDifficulty: ")
                     if tttinput in ["impossible", "Impossible"]:
-                        print()
+                        print(" _  _  _\n _  _  _\n _  _  _")
+                        tttinput1 = int(input("Choose a number out of 9: "))
+                        if tttinput1 == 1:
+                            print(" X  _  _\n _  _  _\n _  _  _")
+                            tttinput2 = int(input("Player 2! Number:"))
+                            if tttinput2 == 2:
+                                print
             if gameinput == 3:
                     gagenre = input("Which genre? \nAdventure \n")
                     if gagenre in ["Adventure", "adventure"]:
                         aagwin = 0
                         print('''
-                        [Story by Ian andAdrian]
+                        [Story by Ian and Adrian]
                         You have decided to go on an adventure all by yourself!
                         You may never come back. 
                         You will probably die as there is very low chance any adventurer to survive. 
                         So adventurer what will you do?...
-                        ''')
+                        ''') 
                         print("Use help if you don't know any commands")
                         aagoptions1 = ""
                         while aagoptions1 not in ["backwards", "forward", "left", "right"]:
                             aagoptions1 = input("")
-                            if aagoptions1 == "help":
-                                print("forward = go forward \nbackwards = go backwards \nleft = turn left \nright = turn right")
-                            elif aagoptions1 == "backwards":
+                            aagoptions1.capitalize
+                            if aagoptions1 == "Help":
+                                print("Forward = go forward \nBackwards = go backwards \nLeft = turn left \nRight = turn right")
+                            elif aagoptions1 == "Backwards":
                                 print('''
                                 You decided to go back home.
                                 You had enough adventure for today.
                                 ''')
                                 break
-                            elif aagoptions1 == "forward":
+                            elif aagoptions1 == "Forward":
                                 print('''
                                 You continue onward.
                                 You found a town.
@@ -215,11 +232,12 @@ while True:
                                 Get up from the bed?
                                 ''')
                                 aagoptions1 = ""
-                                while aagoptionstown2 not in ["open the window", "get up"]:
+                                while aagoptionstown2 not in ["Open the window", "Get up"]:
                                     aagoptionstown2 = input("")
-                                    if aagoptionstown2 == "help":
-                                        print("open the window = open the window next to your bed \nget up = get up from the bed")
-                                    if aagoptionstown2 == "open the window":
+                                    aagoptionstown2.capitalize
+                                    if aagoptionstown2 == "Help":
+                                        print("Open the window = open the window next to your bed \nget up = get up from the bed")
+                                    if aagoptionstown2 == "Open the window":
                                         print(''' 
                                         You hear loud sounds towards the window and open it.
                                         It appears that there is a commotion happening. 
@@ -229,7 +247,20 @@ while True:
                                         They plan to rob the town of all its precious money and gold from the town bank.
                                         ''')
                                         aagoptionstown3 = ""
-                                    if aagoptionstown2 == "get up":
+                                        while aagoptionstown3 not in ("run outside,find authority"):
+                                            aagoptionstown33 = input("")
+                                            if aagoptionstown33 == "run outside":
+                                                print(''' you run out the building but its too late the men have already left 
+                                                all you see on the ground is a peice of paper,on it its wirten 32 tiky lane cenarto st.
+                                                you go my to a near merchant he sells u map.
+                                                but it is a ripoff and cost over 1 billion (inworld) currency
+                                                what do u do
+                                                ''')
+                                            if aagoptionstown33 == "find authority":
+                                                print(''' 
+                                                You run outside to find police but oops car crash
+                                                ''')
+                                    if aagoptionstown2 == "Get up":
                                         print('''
                                         You got up from the bed.
                                         You feel groggy.
@@ -243,22 +274,25 @@ while True:
                                         aagoptionstown32 = ""
                                         while aagoptionstown32 not in ("help", "yes", "no"):
                                             aagoptionstown32 = input("")
-                                            if aagoptionstown32 == "help":
-                                                print("yes or no")
-                                            if aagoptionstown32 == "yes":
+                                            if aagoptionstown32 == "Help":
+                                                print("Yes = ope           n door No = dont open door")
+                                            if aagoptionstown32 == "Yes":
                                                 print('''
-
+                                                You had a mental breakdown in front of the door.
+                                                You thought of how bad you are at stopping the theives.
+                                                (Hint: Don't open the door idiot)
                                                 ''')
-                                            if aagoptionstown32 == "no":
+                                            if aagoptionstown32 == "No":
                                                 print('''
                                                 You regain your mind and thought through things.
                                                 You went back to inn and slept.
                                                 The next morning, you decided you had enough adventure and went back home.
-                                                (Hint: Listen to your own instincts) 
+                                                (Hint: Listen to your own instincts)
                                                 ''')
                                             else: print("I'm sorry I do not understand")
                                         while aagoptionstown3 not in ("help", "return to sleep", "stop them"):
                                             aagoptionstown3 = input("")
+                                            aagoptionstown3.capitalize()
                                             if aagoptionstown3 == "help":
                                                 print("return to sleep = go back to sleep \nstop them = stop the thieves")
                                             if aagoptionstown3 == "return to sleep":
@@ -338,6 +372,7 @@ while True:
                                                     aagoptions4cave = input("")
                                                     if aagoptions4cave == "leave":
                                                         print('''
+                                                        
                                                         ''')
                                                     else: print("I'm sorry I do not understand")
                                             else: print("I'm sorry I do not understand")
