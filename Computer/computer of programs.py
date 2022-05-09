@@ -9,27 +9,22 @@ def slow_type(x, y):
         sys.stdout.write(l)
         sys.stdout.flush()
         time.sleep(random.random()*10.0/typing_speed)
-def riddled(x, y, z):
-    if riddlechooser == x:
-        riddleanswer1 = (y)
-        riddle = ('')
-        while z != riddleanswer1:
-            riddle = input(z)
-            if riddle == riddleanswer1:
-                print("You got that one correct!")
-                riddles.remove(x)
-                break
 def makeaccount(x, y):
-        if userinterface in [x]:
-            password = None
-            attempts = []
-            while password != y:
-                password = input("Enter the password: ")
-                attempts.append(password)
-                if password != y:
-                    print("Your password is incorrect. Attempts:")
-                    for i in attempts:
-                        print(i)
+    if userinterface in [x]:
+        password = None
+        attempts = []
+        password2 = 3
+        while password != y:
+            password = input("Enter the password: ")
+            attempts.append(password)
+            if password != y:
+                password2 = password2 - 1
+                print("Your password is incorrect. Attempts:")
+                for i in attempts:
+                    print(i)
+            if password2 == 0:
+                print(f"You are not {x}. Goodbye.")
+                exit()
             print("Correct password.")
             print("Welcome back!")
 IanOS1 = ("Booting up IanOS. \n")
@@ -42,10 +37,11 @@ datatimesettings1 = False
 userinterface = ""
 while userinterface not in ["guest", "Guest", "Ian", "ian"]:
     userinterface = input("\nWhich user? \nIan \nGuest \n")
+    userinterface.capitalize()
     makeaccount("Ian", "password")
-    if userinterface in ["Guest", "guest"]:
+    if userinterface in ["Guest"]:
         print("Welcome!")
-    elif userinterface not in ["guest", "Guest", "Ian", "ian"]:
+    elif userinterface not in ["Guest", "Ian"]:
         print(f"There is no user called {userinterface}")
 while True:
     if datatime == False:
@@ -54,95 +50,113 @@ while True:
         print(dddatatime)
         if datatimesettings1 != True: 
             datatime = True
-    print("Which program? \n1. Calculator \n2. PaintINDEV \n3. GamesIndev \n4. Other ProgramsINDev \nExit?")
-    program = input()
-    if program in ["calculator", "1"]:
-        # Calculator
-        # Improvements: finished
-        print("Hello this is a calculator")
-        loop = int(input("How many times you want to loop the program? "))
-        calnum1 = float(input("Put the first number here \n"))
-        for i in range(loop):
-            choice = input("Which mathmatical symbol? \n(+ = 1, - = 2, x = 3, / = 4) \n")
-            calnum2 = float(input("Put the second number here \n"))
-            if choice in ["1", "+"]:
-                sum = calnum1 + calnum2
-                print(f'{calnum1} + {calnum2} = {sum}')
-            elif choice in ["2", "-"]:
-                sum = calnum1 - calnum2
-                print(f'{calnum1} - {calnum2} = {sum}')
-            elif choice in ["3", "*", "x"]:
-                sum = calnum1 * calnum2
-                print(f'{calnum1} * {calnum2} = {sum}')
-            elif choice in ["4", "/"]:
-                sum = calnum1 / calnum2
-                print (f'{calnum1} / {calnum2} = {sum}')
-            else:
-                print("um put the right numbers next time")
-                break
-            loop = loop - 1
-            if loop == 0:
-                break
-            if loop > 0:
-                choice2 = input("Are you done with your calculations? (Y/N) ")
-                if choice2 == "yes":
-                    break
-                else: 
-                    print(f"Amount of loops left: {loop}")
-                    calnum1 = sum
-    elif program in ["paint", "2"]:
+    program = input("Which program? \n1. Math \n2. PaintINDEV \n3. GamesIndev \n4. Other ProgramsINDev \nExit?\n")
+    program.capitalize()
+    if program in ["Math", "1"]:
+        while True:
+            mathcheck = input("\nWhich program? \nCalculator \nPercentage \nExponentiation\n")
+            mathcheck.capitalize()
+            if mathcheck in ["Calculator"]:
+                # Calculator
+                # Improvements: finished
+                print("Hello this is a calculator")
+                loop = int(input("How many times you want to loop the program? "))
+                calnum1 = float(input("Put the first number here \n"))
+                for i in range(loop):
+                    choice = input("Which mathmatical symbol? \n(+ = 1, - = 2, x = 3, / = 4) \n")
+                    calnum2 = float(input("Put the second number here \n"))
+                    if choice in ["1", "+"]:
+                        sum = calnum1 + calnum2
+                        print(f'{calnum1} + {calnum2} = {sum}')
+                    elif choice in ["2", "-"]:
+                        sum = calnum1 - calnum2
+                        print(f'{calnum1} - {calnum2} = {sum}')
+                    elif choice in ["3", "*", "x"]:
+                        sum = calnum1 * calnum2
+                        print(f'{calnum1} * {calnum2} = {sum}')
+                    elif choice in ["4", "/"]:
+                        sum = calnum1 / calnum2
+                        print (f'{calnum1} / {calnum2} = {sum}')
+                    else:
+                        print("um put the right numbers next time")
+                        break
+                    loop = loop - 1
+                    if loop == 0:
+                        break
+                    if loop > 0:
+                        choice2 = input("Are you done with your calculations? (Y/N) ")
+                        if choice2 == "yes":
+                            break
+                        else: 
+                            print(f"Amount of loops left: {loop}")
+                            calnum1 = sum
+            if mathcheck in ["Percentage", "%"]:
+                input("Welcome to the Percentage Calculator!\nHere, we check how much is a percentage of one another")
+            if mathcheck in ["Square", "Exponent"]:
+                input("Welcome to the Squ")
+    elif program in ["Paint", "2"]:
         # Paint
         # Improvements: pen is finished
         print("Welcome to Paint")
         paintquit2 = False
         while paintquit2 != True:
             paintinput = input("Start? (Y/N) ")
-            if paintinput in ["yes", "y", "Yes", "Y"]:
+            paintinput.capitalize
+            if paintinput in ["Yes", "Y"]:
                 paintquit = False
                 while paintquit != True:
                     options = input("Choose what you want to do: \nDraw \nPen Colour \nPaint Bucket \nExit \n")
+                    options.capitalize()
                     if options in ["draw", "pen"]:
                         penoptions = input("How much for the pen? \nTurn the pen \nLeft or Right? \nMove the pen \nForward or Backwards? \n")
                         penoptions2 = float(input("How much or what colour/color?"))
-                        if penoptions in ["left", "turn left", "go left"]:
+                        if penoptions in ["Left", "Turn left", "Go left"]:
                             left(penoptions2)
-                        if penoptions in ["right", "turn right", "go right"]:
+                        if penoptions in ["Right", "Turn right", "Go right"]:
                             right(penoptions2)
-                        elif penoptions in ["forward", "go foward"]:
+                        elif penoptions in ["Forward", "Go foward"]:
                             forward(penoptions2)
-                        elif penoptions in ["backwards", "back", "go backwards", "backward", "go backward"]:
+                        elif penoptions in ["Backwards", "Back", "Go backwards", "Backward", "Go backward"]:
                             def backward(x):
                                 right(180)
                                 forward(x)
                             backward(penoptions2)
-                    elif options in ["color", "pen colour", "pen color"]:
+                    elif options in ["Color", "Pen colour"]:
                         paintcolour = input("Which color?")
                         pencolor(paintcolour)
-                    elif options in ["paint bucket", "bucket"]:
+                    elif options in ["Paint bucket", "Bucket"]:
                         paintcolour = input("Which color?")
                         fillcolor(paintcolour)
-                    elif options in ["quit", "exit", "leave"]:
+                    elif options in ["Quit", "Exit", "Leave"]:
                         paintquit2 = True
                         break
             elif paintinput in ["no", "No", "n", "N"]:
                 break
             else: print("I'm sorry I do not understand.")
-    elif program in ["games", "3"]:
+    elif program in ["Games", "3"]:
         # Games
         # Improvements: Add more games
         print("Welcome to Games")
         while True:
-            print("Choose which game you want to play \n0. Quit \n1. Riddles \n2. Tic Tac Toe \n3. Text Adventure \n10. Next page...")
-            gameinput = int(input("Game No."))
+            gameinput = int(input("Choose which game you want to play:\n0. Quit\n1. Riddles\n2. Tic Tac Toe\n3. Text Adventure\n10. Next page...\nGame No."))
             if gameinput == 0:
                 continue
             if gameinput == 1:
-                print("Welcome to Riddles!")
-                riddleinput = input("Do you want to start?")
+                riddleinput = input("Welcome to Riddles!\nDo you want to start?")
                 if riddleinput == "yes":
+                    def riddler(x, y, z):
+                        if riddlechooser == x:
+                            riddleanswer1 = (y)
+                            riddle = ('')
+                            while z != riddleanswer1:
+                                riddle = input(z)
+                                if riddle == riddleanswer1:
+                                    print("You got that one correct!")
+                                    riddles.remove(x)
+                                    break
                     print("sorry this is still WIP")
                     riddles = 1, 2
-                    riddle1 = "Riddle: I am tall when I am young, and I am short when I am old. \nWhat am I?\n"
+                    riddle1 = "Riddle: I am tall when I am young, and I am short when I am old.\nWhat am I?\n"
                     riddle2 = "Riddle: What flows and has banks?\n"
                     riddle3 = ""
                     riddleanswer1 = "candle"
@@ -151,9 +165,9 @@ while True:
                     while True:
                         riddlechooser = random.choice(riddles)
                         riddles = [1, 2]
-                        riddled(1, riddleanswer1, riddle1)
-                        riddled(2, riddleanswer2, riddle2)
-                        riddled(3, riddleanswer3, riddle3)
+                        riddler(1, riddleanswer1, riddle1)
+                        riddler(2, riddleanswer2, riddle2)
+                        riddler(3, riddleanswer3, riddle3)
                         riddleyn = input('Want another riddle?')
                         if riddleyn in ['no', 'n']: 
                             print("Okay, see you later!")
@@ -338,22 +352,23 @@ while True:
                             else: print("I'm sorry I do not understand")
             elif gameinput not in [1, 2, 3]:
                 print("I'm sorry I do not understand")
-    elif program in ["other programs", "programs", "4"]:
+    elif program in ["Other Programs", "Programs", "4"]:
         print("Which program?")
-        inputprogram = input()
+        inputprogram = int(input())
         if inputprogram in ["1"]:
             input()
-    elif program in ["settings", "4"]:
-        settings = print("What settings?")
-        if settings in ["time"]:
+    elif program in ["Settings", "4"]:
+        settings = input("What settings?")
+        settings.capitalize()
+        if settings in ["Time"]:
             settingsdt = print("What do you want to change?")
             if settingsdt in ["datatime"]:
                 datatimesettings1 = True
             elif settingsdt in ["exit", "Exit"]:
                 break
-        if settings in ["Help", "help"]:
+        if settings in ["Help"]:
             print("dt: sets the time of the computer")
-    elif program in ["shut down", "5", "quit", "stop"]:
+    elif program in ["Shut down", "5", "Quit", "Stop"]:
         #Quits
         break
     else: print(f"I'm sorry. I do not understand this command: {program}")
