@@ -1,33 +1,33 @@
-import sys,time,random,turtle
+import sys,time,random,turtle,math
 from tokenize import Exponent
 from tkinter import Y
 import datetime as dt
 from dateutil.tz import gettz
 from turtle import *
-def slow_type(x, y):
-    typing_speed = y
-    for l in x:
+def slow_type(text, speed):
+    typing_speed = speed
+    for l in text:
         sys.stdout.write(l)
         sys.stdout.flush()
         time.sleep(random.random()*10.0/typing_speed)
-def makeaccount(x, y):
-    if userinterface in [x]:
-        password = None
+def makeaccount(user, password):
+    if userinterface in [user]:
+        password3 = None
         attempts = []
         password2 = 3
-        while password != y:
-            password = input("Enter the password: ")
-            attempts.append(password)
-            if password != y:
+        while password3 != password:
+            password3 = input("Enter the password: ")
+            attempts.append(password3)
+            if password3 != password:
                 password2 = password2 - 1
                 print("Your password is incorrect. Attempts:")
                 for i in attempts:
                     print(i)
             if password2 == 0:
-                print(f"You are not {x}. Goodbye.")
-                exit()
-            print("Correct password.")
-            print("Welcome back!")
+                print(f"You are not {user}. Goodbye.")
+                sys.exit()
+        print("Correct password.")
+        print("Welcome back!")
 IanOS1 = ("Booting up IanOS. \n")
 IanOS2 = ("Booting up IanOS.. \n")
 IanOS3 = ("Booting up IanOS... \n")
@@ -62,10 +62,11 @@ while True:
                 # Improvements: finished
                 print("Hello this is a calculator")
                 loop = int(input("How many times you want to loop the program? "))
-                calnum1 = float(input("Put the first number here \n"))
+                calnum1 = float(input("Put the first number here: \n"))
                 for i in range(loop):
-                    choice = input("Which mathmatical symbol? \n(+ = 1, - = 2, x = 3, / = 4) \n")
-                    calnum2 = float(input("Put the second number here \n"))
+                    choice = input("Which mathmatical symbol?\n(+ = 1, - = 2, x = 3, / = 4)\n(^ = 5, % = 6, √ = 7)\n")
+                    if choice not in ["7", "√"]:
+                        calnum2 = float(input("Put the second number here: \n"))
                     if choice in ["1", "+"]:
                         sum = calnum1 + calnum2
                         print(f'{calnum1} + {calnum2} = {sum}')
@@ -77,7 +78,18 @@ while True:
                         print(f'{calnum1} * {calnum2} = {sum}')
                     elif choice in ["4", "/"]:
                         sum = calnum1 / calnum2
-                        print (f'{calnum1} / {calnum2} = {sum}')
+                        print(f'{calnum1} / {calnum2} = {sum}')
+                    elif choice in ["5", "^"]:
+                        sum = calnum1 ** calnum2
+                        print(f'{calnum1}raised to the power of {calnum2} is {sum}')
+                    elif choice in ["6", "%"]:
+                        sum = 100 * calnum1 / calnum2
+                        print(f'{calnum1}% of {calnum2} is {sum}')
+                        break
+                    elif choice in ["7", "√"]:
+                        sum = math.sqrt(calnum1)
+                        print(f'The square root of {calnum1} is {sum}')
+                        break
                     else:
                         print("um put the right numbers next time")
                         break
@@ -90,20 +102,6 @@ while True:
                             break
                         else: 
                             print(f"Amount of loops left: {loop}")
-                            calnum1 = sum
-            if mathcheck in ["Percentage", "%"]:
-                ppart = int(input("Welcome to the Percentage Calculator!\nHere, we check how much is a percentage of one another.\nx of %y\nWhat is x?:"))
-                pwhole = int(input(f"{ppart} of %"))
-                print(100 * float(ppart)/float(pwhole))
-                
-            if mathcheck in ["Square", "Exponent"]:
-                print("Welcome to the Exponent Calculator.")
-                number12 = int(input("What is your number? "))
-                exponent = int(input("To the power of "))
-                print()
-                choice2 = input("Are you done with your calculations? (Y/N) ")
-                if choice2 == "yes":
-                    break
     elif program in ["Paint", "2"]:
         # Paint
         # Improvements: pen is finished
@@ -154,15 +152,15 @@ while True:
             if gameinput == 1:
                 riddleinput = input("Welcome to Riddles!\nDo you want to start?")
                 if riddleinput == "yes":
-                    def riddler(x, y, z):
-                        if riddlechooser == x:
-                            riddleanswer1 = (y)
-                            riddle = ('')
-                            while z != riddleanswer1:
-                                riddle = input(z)
-                                if riddle == riddleanswer1:
+                    def riddler(number, answer, riddle):
+                        if riddlechooser == number:
+                            riddleanswer1 = (answer)
+                            riddle1 = ('')
+                            while riddle != riddleanswer1:
+                                riddle1 = input(riddle)
+                                if riddle1 == riddleanswer1:
                                     print("You got that one correct!")
-                                    riddles.remove(x)
+                                    riddles.remove(number)
                                     break
                     print("sorry this is still WIP")
                     riddles = 1, 2
