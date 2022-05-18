@@ -43,7 +43,8 @@ Ver. 0.2.2 The Breath of Fresh Air Upgrade PART 1
 -tweaked paint to make user-friendly
 -added TicTacToe two player
 -made it executable both MacOS and Windows
--added more math programs: percentage calculator and exponent calculator
+-added more math
+-tweaked modules
 Ver. 0.2.3 The Breath of Fresh Air Upgrade PART 2
 -extended the ui of TicTacToe
 -finished adventure game's script
@@ -75,9 +76,7 @@ Ver. 0.4.1 The Multi-Media Update (Media) PART 2
 -allows to play music in the program
 Ver. 0.4.2 The Multi-Media Update (Video) PART 3
 
-Ver. 0.4.3 The Multi-Media Update (Internet) PART 4
--allows search for the internet 
-Ver. 0.4.4 The Multi-Media Update (Fixer-Upper) PART 5
+Ver. 0.4.3 The Multi-Media Update (Fixer-Upper) PART 4
 
 
 
