@@ -25,8 +25,8 @@ def makeaccount(user, password):
             if password3 != password:
                 password2 = password2 - 1
                 print("Your password is incorrect. Attempts:")
-                for i in attempts:
-                    print(i)
+                for a in attempts:
+                    print(a)
             if password2 == 0:
                 print(f"You are not {user}. Goodbye.")
                 sys.exit()
@@ -55,9 +55,15 @@ while True:
         print(dddatatime)
         if not datatimesettings1:
             datatime = True
-    program = input("Which program? \n1. Math \n2. PaintINDEV \n3. GamesIndev \n4. Other ProgramsINDev \nExit?\n")
+    program = input('''Which program? 
+    1. Math 
+    2. PaintINDEV 
+    3. GamesIndev 
+    4. Other ProgramsINDev 
+    Exit?
+    ''')
     if program in ["Math", "math", "1"]:
-        while mathcheck == None:
+        while mathcheck is None:
             mathcheck = input("\nWhich program?\n")
             if mathcheck in ["Calculator", "calculator"]:
                 # Calculator
@@ -66,7 +72,11 @@ while True:
                 loop = int(input("How many times you want to loop the program? "))
                 calnum1 = float(input("Put the first number here: \n"))
                 for i in range(loop):
-                    choice = input(f"Which mathmatical symbol?\n(+ = 1, - = 2, x = 3, / = 4)\n(% = 5, ^ = 6, √ = 7)\n")
+                    choice = input(f'''
+                    Which mathmatical symbol?
+                    (+ = 1, - = 2, x = 3, / = 4)
+                    (% = 5, ^ = 6, √ = 7)
+                    ''')
                     if choice not in ["7", "√", "%", "5"]:
                         calnum2 = float(input(f"{calnum1} {choice} "))
                     if choice in ["5", "%"]:
@@ -106,6 +116,8 @@ while True:
                             break
                         else: 
                             print(f"Amount of loops left: {loop}")
+            if mathcheck in ["Angles"]:
+                print("angle")
     elif program in ["Paint", "paint", "2"]:
         # Paint
         # Improvements: pen is finished
@@ -117,13 +129,20 @@ while True:
                 print("Sorry no")
             elif paintinput in ["no", "No", "n", "N"]:
                 break
-            else: print("I'm sorry I do not understand.")
+            else:
+                print("I'm sorry I do not understand.")
     elif program in ["Games", "games", "3"]:
         # Games
         # Improvements: Add more games
         print("Welcome to Games")
         while True:
-            gameinput = int(input("Choose which game you want to play:\n0. Quit\n1. Riddles\n2. Tic Tac Toe\n3. Text Adventure\n10. Next page...\nGame No."))
+            gameinput = int(input('''Choose which game you want to play:
+            0. Quit
+            1. Riddles
+            2. Tic Tac Toe
+            3. Text Adventure
+            10. Next page...
+            Game No.'''))
             if gameinput == 0:
                 continue
             if gameinput == 1:
@@ -131,11 +150,10 @@ while True:
                 if riddleinput == "yes":
                     def riddler(number, answer, riddle):
                         if riddlechooser == number:
-                            riddleanswer1 = answer
-                            riddle1 = ('')
-                            while riddle != riddleanswer1:
-                                riddle1 = input(riddle)
-                                if riddle1 == riddleanswer1:
+                            riddlea = None
+                            while riddlea != answer:
+                                riddlea = input(riddle)
+                                if riddlea == answer:
                                     print("You got that one correct!")
                                     riddles.remove(number)
                                     break
@@ -165,9 +183,12 @@ while True:
                     if tttinput in ["impossible", "Impossible"]:
                         pass
             if gameinput == 3:
-                    gagenre = input("Which genre? \nAdventure \n")
-                    if gagenre in ["Adventure", "adventure"]:
-                        pass
+                gagenre = input('''
+                Which genre?
+                Adventure
+                ''')
+                if gagenre in ["Adventure", "adventure"]:
+                    pass
             elif gameinput not in [1, 2, 3]:
                 print("I'm sorry I do not understand")
     elif program in ["other programs", "programs", "Other programs", "Programs", "4"]:
@@ -178,7 +199,7 @@ while True:
     elif program in ["Settings", "settings", "4"]:
         settings = input("What settings?")
         if settings in ["time", "Time"]:
-            settingsdt = print("What do you want to change?")
+            settingsdt = input("What do you want to change?")
             if settingsdt in ["datatime"]:
                 datatimesettings1 = True
             elif settingsdt in ["exit", "Exit"]:
@@ -188,5 +209,6 @@ while True:
     elif program in ["shut down", "5", "quit", "stop", "exit"]:
         # Quits
         break
-    else: print(f"I'm sorry. I do not understand this command: {program}")
+    else:
+        print(f"I'm sorry. I do not understand this command: {program}")
 print("Goodbye!")
