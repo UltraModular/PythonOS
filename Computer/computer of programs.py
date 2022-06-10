@@ -14,24 +14,53 @@ def slow_type(text, speed):
         time.sleep(random.random()*10.0/typing_speed)
 
 
-def makeaccount(user, password):
+
+def makeaccount(user, password, extra):
     if userinterface in [user]:
         password3 = None
         attempts = []
         password2 = 3
+        if extra == 2 or extra == 12:
+            if user == "Ian":
+                hint = ""
         while password3 != password:
             password3 = input("Enter the password: ")
             attempts.append(password3)
             if password3 != password:
-                password2 = password2 - 1
+                if extra == 1 or extra == 12:
+                    password2 = password2 - 1
+                    print(f"Attempts remaning: {password2}")
+                if extra == 2 or extra == 12:
+                    #hint system
+                    print(f"Hint: {hint}")
                 print("Your password is incorrect. Attempts:")
                 for a in attempts:
                     print(a)
-            if password2 == 0:
-                print(f"You are not {user}. Goodbye.")
-                sys.exit()
-        print("Correct password.")
-        print("Welcome back!")
+            if extra == 1 or extra == 12:
+                if password2 == 0:
+                    print(f"You are not {user}. Goodbye.")
+                    sys.exit()
+        print("Correct password. Welcome back!")
+
+
+def calculate(x, y, operator, extra):
+    # calculates
+    if operator == "+":
+        sum = x + y
+    if operator == "-":
+        sum = x - y
+    elif operator == "*":
+        sum = x * y
+    elif operator == "/":
+        sum = x / y
+    else:
+        z = 1
+        raise ValueError("Input a number")
+    if z == None:
+        if extra == 1:
+            return f'{x} {operator} {y} = {sum}'
+        else:
+            return sum
 
 
 IanOS1 = "Booting up IanOS. \n"
@@ -79,29 +108,30 @@ while True:
                     ''')
                     if choice not in ["7", "√", "%", "5"]:
                         calnum2 = float(input(f"{calnum1} {choice} "))
+                    if choice in ["", ""]:
+                        calnum2 = float(input(f"{calnum1} {choice} "))
                     if choice in ["5", "%"]:
                         calnum2 = float(input(f"{calnum1}% of? "))
                     if choice in ["1", "+"]:
-                        sum = calnum1 + calnum2
-                        print(f'{calnum1} + {calnum2} = {sum}')
+                        choice = "+"
+                        print(calculate(calnum1, calnum2, choice))
                     elif choice in ["2", "-"]:
-                        sum = calnum1 - calnum2
-                        print(f'{calnum1} - {calnum2} = {sum}')
+                        choice = "-"
+                        print(calculate(calnum1, calnum2, choice))
                     elif choice in ["3", "*", "x"]:
-                        sum = calnum1 * calnum2
-                        print(f'{calnum1} * {calnum2} = {sum}')
+                        choice = "*"
+                        print(calculate(calnum1, calnum2, choice))
                     elif choice in ["4", "/"]:
-                        sum = calnum1 / calnum2
-                        print(f'{calnum1} / {calnum2} = {sum}')
+                        choice = "/"
+                        print(calculate(calnum1, calnum2, choice))
                     elif choice in ["5", "%"]:
                         sum = 100 * calnum1 / calnum2
                         print(f'{calnum1}% of {calnum2} = {sum}')
-                        break
                     elif choice in ["6", "^"]:
                         sum = calnum1 ** calnum2
                         print(f'{calnum1} raised to the power of {calnum2} = {sum}')
                     elif choice in ["7", "√"]:
-                        sum = math.sqrt(calnum1)
+                        sum = math.sqrt(calnum1, )
                         print(f'The square root of {calnum1} = {sum}')
                         break
                     else:
@@ -158,7 +188,6 @@ while True:
                                     riddles.remove(number)
                                     break
                     print("sorry this is still WIP")
-                    riddles = 1, 2
                     riddle1 = "Riddle: I am tall when I am young, and I am short when I am old.\nWhat am I?\n"
                     riddle2 = "Riddle: What flows and has banks?\n"
                     riddle3 = ""
