@@ -6,13 +6,31 @@ import datetime as dt
 from dateutil.tz import gettz
 
 
+def iof(number):
+    y = isinstance(number, float)
+    if y != True:
+        number = int(number)
+    else:
+        number = float(number)
+    return number
+
+
+def riddler(number, answer, riddle):
+    if riddlechooser == number:
+        riddlea = None
+        while riddlea != answer:
+            riddlea = input(riddle)
+            if riddlea == answer:
+                print("You got that one correct!")
+                riddles.remove(number)
+                break
+
+
 def slow_type(text, speed):
-    typing_speed = speed
     for l in text:
         sys.stdout.write(l)
         sys.stdout.flush()
-        time.sleep(random.random()*10.0/typing_speed)
-
+        time.sleep(random.random()*10.0/speed)
 
 
 def makeaccount(user, password, extra):
@@ -43,24 +61,17 @@ def makeaccount(user, password, extra):
         print("Correct password. Welcome back!")
 
 
-def calculate(x, y, operator, extra):
+def calculate(x, y, operator):
     # calculates
-    if operator == "+":
+    if operator in ["+", "1"]:
         sum = x + y
-    if operator == "-":
+    if operator in ["-", "1"]:
         sum = x - y
-    elif operator == "*":
+    elif operator in ["*", "x", "1"]:
         sum = x * y
-    elif operator == "/":
+    elif operator == ["/", "4"]:
         sum = x / y
-    else:
-        z = 1
-        raise ValueError("Input a number")
-    if z == None:
-        if extra == 1:
-            return f'{x} {operator} {y} = {sum}'
-        else:
-            return sum
+    return f'{x} {operator} {y} = {sum}'
 
 
 IanOS1 = "Booting up IanOS. \n"
@@ -70,9 +81,9 @@ slow_type((IanOS1 + IanOS2 + IanOS3) * 3, 500)
 datatime = False
 datatimesettings1 = False
 userinterface = ""
-while userinterface not in ["guest", "Guest", "Ian", "ian"]:
+while userinterface not in ["Guest", "Ian"]:
     userinterface = input("\nWhich user? \nIan \nGuest \n")
-    makeaccount("Ian", "password")
+    makeaccount("Ian", "password", 12)
     if userinterface in ["Guest"]:
         print("Welcome!")
     elif userinterface not in ["Guest", "Ian"]:
@@ -84,7 +95,8 @@ while True:
         print(dddatatime)
         if not datatimesettings1:
             datatime = True
-    program = input('''Which program? 
+    program = input('''
+    Which program? 
     1. Math 
     2. PaintINDEV 
     3. GamesIndev 
@@ -92,6 +104,7 @@ while True:
     Exit?
     ''')
     if program in ["Math", "math", "1"]:
+        mathcheck = None
         while mathcheck is None:
             mathcheck = input("\nWhich program?\n")
             if mathcheck in ["Calculator", "calculator"]:
@@ -99,30 +112,26 @@ while True:
                 # Improvements: finished
                 print("Hello this is a calculator")
                 loop = int(input("How many times you want to loop the program? "))
-                calnum1 = float(input("Put the first number here: \n"))
+                calnum1 = iof(input("Put the first number here: \n"))
                 for i in range(loop):
                     choice = input(f'''
                     Which mathmatical symbol?
                     (+ = 1, - = 2, x = 3, / = 4)
                     (% = 5, ^ = 6, √ = 7)
                     ''')
-                    if choice not in ["7", "√", "%", "5"]:
-                        calnum2 = float(input(f"{calnum1} {choice} "))
-                    if choice in ["", ""]:
-                        calnum2 = float(input(f"{calnum1} {choice} "))
                     if choice in ["5", "%"]:
-                        calnum2 = float(input(f"{calnum1}% of? "))
+                        calnum2 = iof(input(f"{calnum1}% of? "))
+                    if choice not in ["7", "√", "%", "5"]:
+                        calnum2 = iof(input(f"{calnum1} {choice} "))
                     if choice in ["1", "+"]:
                         choice = "+"
-                        print(calculate(calnum1, calnum2, choice))
                     elif choice in ["2", "-"]:
                         choice = "-"
-                        print(calculate(calnum1, calnum2, choice))
                     elif choice in ["3", "*", "x"]:
                         choice = "*"
-                        print(calculate(calnum1, calnum2, choice))
                     elif choice in ["4", "/"]:
                         choice = "/"
+                    if choice not in ["7", "√", "%", "5"]:
                         print(calculate(calnum1, calnum2, choice))
                     elif choice in ["5", "%"]:
                         sum = 100 * calnum1 / calnum2
@@ -131,7 +140,7 @@ while True:
                         sum = calnum1 ** calnum2
                         print(f'{calnum1} raised to the power of {calnum2} = {sum}')
                     elif choice in ["7", "√"]:
-                        sum = math.sqrt(calnum1, )
+                        sum = math.sqrt(calnum1)
                         print(f'The square root of {calnum1} = {sum}')
                         break
                     else:
@@ -145,6 +154,9 @@ while True:
                         if choice2 == "yes":
                             break
                         else: 
+                            choice = None
+                            calnum2 = None
+                            calnum1 = sum
                             print(f"Amount of loops left: {loop}")
             if mathcheck in ["Angles"]:
                 print("angle")
@@ -178,15 +190,6 @@ while True:
             if gameinput == 1:
                 riddleinput = input("Welcome to Riddles!\nDo you want to start?")
                 if riddleinput == "yes":
-                    def riddler(number, answer, riddle):
-                        if riddlechooser == number:
-                            riddlea = None
-                            while riddlea != answer:
-                                riddlea = input(riddle)
-                                if riddlea == answer:
-                                    print("You got that one correct!")
-                                    riddles.remove(number)
-                                    break
                     print("sorry this is still WIP")
                     riddle1 = "Riddle: I am tall when I am young, and I am short when I am old.\nWhat am I?\n"
                     riddle2 = "Riddle: What flows and has banks?\n"
