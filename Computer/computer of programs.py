@@ -83,7 +83,7 @@ datatimesettings1 = False
 userinterface = ""
 while userinterface not in ["Guest", "Ian"]:
     userinterface = input("\nWhich user? \nIan \nGuest \n")
-    makeaccount("Ian", "password", 12)
+    makeaccount("Ian", "password", 1)
     if userinterface in ["Guest"]:
         print("Welcome!")
     elif userinterface not in ["Guest", "Ian"]:
@@ -106,7 +106,7 @@ while True:
     if program in ["Math", "math", "1"]:
         mathcheck = None
         while mathcheck is None:
-            mathcheck = input("\nWhich program?\n")
+            mathcheck = input("\nWhich program?\nCalculator\nAngles\n")
             if mathcheck in ["Calculator", "calculator"]:
                 # Calculator
                 # Improvements: finished
