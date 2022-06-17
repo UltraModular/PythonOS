@@ -26,6 +26,17 @@ def riddler(number, answer, riddle):
                 break
 
 
+def calculateang(a, b, formula):
+    if formula == 1:
+        sum = math.sqrt(a ** 2 + b ** 2)
+        return f'''
+    formula = a^2 + b^2 = c^2
+    {sum} = ({a}^2 + {b}^2)^2
+    '''
+    if formula == 2:
+        pass
+
+
 def slow_type(text, speed):
     for l in text:
         sys.stdout.write(l)
@@ -74,9 +85,9 @@ def calculate(x, y, operator):
     return f'{x} {operator} {y} = {sum}'
 
 
-IanOS1 = "Booting up IanOS. \n"
-IanOS2 = "Booting up IanOS.. \n"
-IanOS3 = "Booting up IanOS... \n"
+IanOS1 = "Booting up PythonOS. \n"
+IanOS2 = "Booting up PythonOS.. \n"
+IanOS3 = "Booting up PythonOS... \n"
 slow_type((IanOS1 + IanOS2 + IanOS3) * 3, 500)
 datatime = False
 datatimesettings1 = False
@@ -154,12 +165,20 @@ while True:
                         if choice2 == "yes":
                             break
                         else: 
-                            choice = None
-                            calnum2 = None
                             calnum1 = sum
                             print(f"Amount of loops left: {loop}")
             if mathcheck in ["Angles"]:
-                print("angle")
+                print("Hello this is an angles calculator")
+                calangle = int(input('''
+                Which mathmatical theorem?
+                ( **put numbers only** )
+                1 = Pythagoras
+                2 =
+                '''))
+                if calangle == 1:
+                    angnum1 = iof(input("Input the first side: "))
+                    angnum2 = iof(input("Input the second side: "))
+                    print(calculateang(angnum1, angnum2, 1))
     elif program in ["Paint", "paint", "2"]:
         # Paint
         # Improvements: pen is finished

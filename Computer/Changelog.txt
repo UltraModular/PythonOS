@@ -42,7 +42,6 @@ Breath of Fresh Air Updates
 Ver. 0.2.2 The Breath of Fresh Air Upgrade PART 1
 -tweaked paint to make user-friendly
 -added TicTacToe two player
--made it executable both MacOS and Windows
 -added more math
 -tweaked modules
 Ver. 0.2.3 The Breath of Fresh Air Upgrade PART 2
