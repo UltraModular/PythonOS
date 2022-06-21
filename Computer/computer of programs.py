@@ -2,9 +2,6 @@ import sys
 import time
 import random
 import math
-import datetime as dt
-from dateutil.tz import gettz
-
 
 def iof(number):
     y = isinstance(number, float)
@@ -28,7 +25,8 @@ def riddler(number, answer, riddle):
 
 def calculateang(a, b, formula):
     if formula == 1:
-        sum = math.sqrt(a ** 2 + b ** 2)
+        sum = a ** 2 + b ** 2
+        sum = sum ** 2
         return f'''
     formula = a^2 + b^2 = c^2
     {sum} = ({a}^2 + {b}^2)^2
@@ -68,7 +66,7 @@ def makeaccount(user, password, extra):
             if extra == 1 or extra == 12:
                 if password2 == 0:
                     print(f"You are not {user}. Goodbye.")
-                    sys.exit()
+                    quit()
         print("Correct password. Welcome back!")
 
 
@@ -89,8 +87,6 @@ IanOS1 = "Booting up PythonOS. \n"
 IanOS2 = "Booting up PythonOS.. \n"
 IanOS3 = "Booting up PythonOS... \n"
 slow_type((IanOS1 + IanOS2 + IanOS3) * 3, 500)
-datatime = False
-datatimesettings1 = False
 userinterface = ""
 while userinterface not in ["Guest", "Ian"]:
     userinterface = input("\nWhich user? \nIan \nGuest \n")
@@ -100,12 +96,6 @@ while userinterface not in ["Guest", "Ian"]:
     elif userinterface not in ["Guest", "Ian"]:
         print(f"There is no user called {userinterface}")
 while True:
-    if not datatime:
-        ddatatime = dt.datetime.now(gettz('Australia/Melbourne'))
-        dddatatime = f"Today is {ddatatime:%D %A %I:%M %p}"
-        print(dddatatime)
-        if not datatimesettings1:
-            datatime = True
     program = input('''
     Which program? 
     1. Math 
