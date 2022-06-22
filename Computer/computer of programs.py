@@ -198,7 +198,7 @@ while True:
                 continue
             if gameinput == 1:
                 riddleinput = input("Welcome to Riddles!\nDo you want to start?")
-                if riddleinput == "yes":
+                if riddleinput in ["yes", "y", "Yes"]:
                     print("sorry this is still WIP")
                     riddle1 = "Riddle: I am tall when I am young, and I am short when I am old.\nWhat am I?\n"
                     riddle2 = "Riddle: What flows and has banks?\n"
@@ -206,9 +206,9 @@ while True:
                     riddleanswer1 = "candle"
                     riddleanswer2 = "lakes"
                     riddleanswer3 = ""
+                    riddles = [1, 2]
                     while True:
                         riddlechooser = random.choice(riddles)
-                        riddles = [1, 2]
                         riddler(1, riddleanswer1, riddle1)
                         riddler(2, riddleanswer2, riddle2)
                         riddler(3, riddleanswer3, riddle3)
@@ -216,6 +216,7 @@ while True:
                         if riddleyn in ['no', 'n']: 
                             print("Okay, see you later!")
                             break
+                        else: riddles = [1, 2]
             if gameinput == 2:
                 print('Welcome to Tic Tac Toe!')
                 tttinput1 = input('1. Single Player\n2.Multiplayer\n')
