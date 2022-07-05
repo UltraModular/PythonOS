@@ -69,7 +69,7 @@ def makeaccount(userinterface , user:str, password:str, extra:int):
         print("Correct password. Welcome back!")
 
 
-def calculate(x:int, y:int, operator) -> str:
+def calculate(x:int, y:int, operator:str) -> str:
     # calculates
     if operator in "+":
         sum = x + y
@@ -92,10 +92,8 @@ def calculate(x:int, y:int, operator) -> str:
         return f'The square root of {x} = {sum}'
 
 
-IanOS1 = "Booting up PythonOS. \n"
-IanOS2 = "Booting up PythonOS.. \n"
-IanOS3 = "Booting up PythonOS... \n"
-slow_type((IanOS1 + IanOS2 + IanOS3) * 3, 500)
+PyOS = ["Booting up PythonOS. \n", "Booting up PythonOS.. \n", "Booting up PythonOS... \n"]
+slow_type((PyOS[1] + PyOS[2] + PyOS[3]) * 3, 500)
 userinterface = ""
 while userinterface not in ["Guest", "Ian"]:
     userinterface = input("\nWhich user? \nIan \nGuest \n")
@@ -106,12 +104,12 @@ while userinterface not in ["Guest", "Ian"]:
         print(f"There is no user called {userinterface}")
 while True:
     program = input('''
-    Which program? 
-    1. Math 
-    2. PaintINDEV 
-    3. GamesIndev 
-    4. Other ProgramsINDev 
-    Exit?
+Which program? 
+1. Math 
+2. PaintINDEV 
+3. GamesIndev 
+4. Other ProgramsINDev 
+Exit?
     ''')
     if program in ["Math", "math", "1"]:
         mathcheck = None
@@ -128,9 +126,9 @@ while True:
                     if choice == ["7", "√"]:
                         calnum1 = iof(input("Put the first number here: \n"))
                     choice = str(input(f'''
-                    Which mathmatical symbol?
-                    (+ = 1, - = 2, x = 3, / = 4)
-                    (% = 5, ^ = 6, √ = 7)
+Which mathmatical symbol?
+(+ = 1, - = 2, x = 3, / = 4)
+(% = 5, ^ = 6, √ = 7)
                     '''))
                     if choice in ["1", "+"]:
                         choice = "+"
@@ -164,10 +162,10 @@ while True:
             if mathcheck in ["Angles"]:
                 print("Hello this is an angles calculator")
                 calangle = int(input('''
-                Which mathmatical theorem?
-                ( **put numbers only** )
-                1 = Pythagoras
-                2 =
+Which mathmatical theorem?
+( **put numbers only** )
+1 = Pythagoras
+2 =
                 '''))
                 if calangle == 1:
                     angnum1 = iof(input("Input the first side: "))
@@ -192,11 +190,11 @@ while True:
         print("Welcome to Games")
         while True:
             gameinput = int(input('''Choose which game you want to play:
-            0. Quit
-            1. Riddles
-            2. Tic Tac Toe
-            3. Text Adventure
-            10. Next page...
+0. Quit
+1. Riddles
+2. Tic Tac Toe
+3. Text Adventure
+10. Next page...
             Game No.'''))
             if gameinput == 0:
                 continue
