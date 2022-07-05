@@ -1,9 +1,8 @@
 import sys
 import time
 import random
-import math
 
-def iof(number):
+def iof(number) -> int:
     y = isinstance(number, float)
     if y != True:
         number = int(number)
@@ -12,21 +11,21 @@ def iof(number):
     return number
 
 
-def riddler(number, answer, riddle):
+def riddler(number:int, answer:str, riddle:str):
     if riddlechooser == number:
         riddlea = None
         while riddlea != answer:
-            riddlea = input(riddle)
+            riddlea = input(riddle).capitalize
             if riddlea == answer:
                 print("You got that one correct!")
                 riddles.remove(number)
                 break
 
 
-def calculateang(a, b, formula):
+def calculateang(a, b, formula) -> str:
     if formula == 1:
         sum = a ** 2 + b ** 2
-        sum = sum ** 2
+        sum **= 2
         return f'''
     formula = a^2 + b^2 = c^2
     {sum} = ({a}^2 + {b}^2)^2
@@ -35,14 +34,14 @@ def calculateang(a, b, formula):
         pass
 
 
-def slow_type(text, speed):
+def slow_type(text:str, speed:int) -> str:
     for l in text:
         sys.stdout.write(l)
         sys.stdout.flush()
         time.sleep(random.random()*10.0/speed)
 
 
-def makeaccount(user, password, extra):
+def makeaccount(userinterface , user:str, password:str, extra:int):
     if userinterface in [user]:
         password3 = None
         attempts = []
@@ -55,7 +54,7 @@ def makeaccount(user, password, extra):
             attempts.append(password3)
             if password3 != password:
                 if extra == 1 or extra == 12:
-                    password2 = password2 - 1
+                    password2 -= 1
                     print(f"Attempts remaning: {password2}")
                 if extra == 2 or extra == 12:
                     #hint system
@@ -70,17 +69,27 @@ def makeaccount(user, password, extra):
         print("Correct password. Welcome back!")
 
 
-def calculate(x, y, operator):
+def calculate(x:int, y:int, operator) -> str:
     # calculates
-    if operator in ["+", "1"]:
+    if operator in "+":
         sum = x + y
-    if operator in ["-", "1"]:
+    elif operator in "-":
         sum = x - y
-    elif operator in ["*", "x", "1"]:
+    elif operator in "*":
         sum = x * y
-    elif operator == ["/", "4"]:
+    elif operator == "/":
         sum = x / y
-    return f'{x} {operator} {y} = {sum}'
+    if operator in ["+", "-", "*", "/"]:
+        return f'{x} {operator} {y} = {sum}'
+    elif choice in ["5", "%"]:
+        sum = 100 * x / y
+        return f'{x}% of {y} is {sum}'
+    elif choice in ["6", "^"]:
+        sum = x ** y
+        return f'{x} raised to the power of {y} = {sum}'
+    elif choice in ["7", "√"]:
+        sum = iof(x ** 0.5)
+        return f'The square root of {x} = {sum}'
 
 
 IanOS1 = "Booting up PythonOS. \n"
@@ -90,7 +99,7 @@ slow_type((IanOS1 + IanOS2 + IanOS3) * 3, 500)
 userinterface = ""
 while userinterface not in ["Guest", "Ian"]:
     userinterface = input("\nWhich user? \nIan \nGuest \n")
-    makeaccount("Ian", "password", 1)
+    makeaccount(userinterface, "Ian", "password", 1)
     if userinterface in ["Guest"]:
         print("Welcome!")
     elif userinterface not in ["Guest", "Ian"]:
@@ -107,23 +116,22 @@ while True:
     if program in ["Math", "math", "1"]:
         mathcheck = None
         while mathcheck is None:
-            mathcheck = input("\nWhich program?\nCalculator\nAngles\n")
+            mathcheck = input("\nWhich Calculator?\nBasic\nGeometric\n")
             if mathcheck in ["Calculator", "calculator"]:
                 # Calculator
                 # Improvements: finished
+                choice = None
                 print("Hello this is a calculator")
                 loop = int(input("How many times you want to loop the program? "))
                 calnum1 = iof(input("Put the first number here: \n"))
                 for i in range(loop):
-                    choice = input(f'''
+                    if choice == ["7", "√"]:
+                        calnum1 = iof(input("Put the first number here: \n"))
+                    choice = str(input(f'''
                     Which mathmatical symbol?
                     (+ = 1, - = 2, x = 3, / = 4)
                     (% = 5, ^ = 6, √ = 7)
-                    ''')
-                    if choice in ["5", "%"]:
-                        calnum2 = iof(input(f"{calnum1}% of? "))
-                    if choice not in ["7", "√", "%", "5"]:
-                        calnum2 = iof(input(f"{calnum1} {choice} "))
+                    '''))
                     if choice in ["1", "+"]:
                         choice = "+"
                     elif choice in ["2", "-"]:
@@ -132,22 +140,17 @@ while True:
                         choice = "*"
                     elif choice in ["4", "/"]:
                         choice = "/"
-                    if choice not in ["7", "√", "%", "5"]:
-                        print(calculate(calnum1, calnum2, choice))
-                    elif choice in ["5", "%"]:
-                        sum = 100 * calnum1 / calnum2
-                        print(f'{calnum1}% of {calnum2} = {sum}')
+                    if choice in ["5", "%"]:
+                        calnum2 = iof(input(f"{calnum1}% of? "))
                     elif choice in ["6", "^"]:
-                        sum = calnum1 ** calnum2
-                        print(f'{calnum1} raised to the power of {calnum2} = {sum}')
-                    elif choice in ["7", "√"]:
-                        sum = math.sqrt(calnum1)
-                        print(f'The square root of {calnum1} = {sum}')
-                        break
+                        calnum2 = iof(input(f"{calnum1} raised to the power of: "))
+                    elif choice not in ["7", "√", "%", "5"]:
+                        calnum2 = iof(input(f"{calnum1} {choice} "))
                     else:
                         print("um put the right numbers next time")
                         break
-                    loop = loop - 1
+                    print(calculate(calnum1, calnum2, choice))
+                    loop =- 1
                     if loop == 0:
                         break
                     if loop > 0:
@@ -155,7 +158,8 @@ while True:
                         if choice2 == "yes":
                             break
                         else: 
-                            calnum1 = sum
+                            if choice != ["7", "√"]:
+                                calnum1 = sum
                             print(f"Amount of loops left: {loop}")
             if mathcheck in ["Angles"]:
                 print("Hello this is an angles calculator")
@@ -199,24 +203,30 @@ while True:
             if gameinput == 1:
                 riddleinput = input("Welcome to Riddles!\nDo you want to start?")
                 if riddleinput in ["yes", "y", "Yes"]:
-                    print("sorry this is still WIP")
-                    riddle1 = "Riddle: I am tall when I am young, and I am short when I am old.\nWhat am I?\n"
-                    riddle2 = "Riddle: What flows and has banks?\n"
-                    riddle3 = ""
-                    riddleanswer1 = "candle"
-                    riddleanswer2 = "lakes"
-                    riddleanswer3 = ""
+                    riddle = {
+                        1: "Riddle: I am tall when I am young, and I am short when I am old.\nWhat am I?\n",
+                        2: "Riddle: What flows and has banks?\n",
+                        3: "Riddle: In the morning, I walk on 4 legs. In the afternoon, I walk on 2 legs. At night, I walk on 3 legs. What am I?\n",
+                        4: "Riddle: \n"
+                    }
+                    riddleanswers = {
+                        1: "Candle",
+                        2: "Lake",
+                        3: "Human",
+                        4: ""
+                    }
                     riddles = [1, 2]
                     while True:
                         riddlechooser = random.choice(riddles)
-                        riddler(1, riddleanswer1, riddle1)
-                        riddler(2, riddleanswer2, riddle2)
-                        riddler(3, riddleanswer3, riddle3)
+                        riddles = [1, 2, 3]
+                        riddler(1, riddleanswers[1], riddle[1])
+                        riddler(2, riddleanswers[2], riddle[2])
+                        riddler(3, riddleanswers[3], riddle[3])
+                        riddler(4, riddleanswers[4], riddle[4])
                         riddleyn = input('Want another riddle?')
                         if riddleyn in ['no', 'n']: 
                             print("Okay, see you later!")
                             break
-                        else: riddles = [1, 2]
             if gameinput == 2:
                 print('Welcome to Tic Tac Toe!')
                 tttinput1 = input('1. Single Player\n2.Multiplayer\n')
