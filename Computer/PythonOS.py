@@ -96,7 +96,7 @@ PyOS = ["Booting up PythonOS. \n", "Booting up PythonOS.. \n", "Booting up Pytho
 slow_type((PyOS[1] + PyOS[2] + PyOS[3]) * 3, 500)
 userinterface = ""
 while userinterface not in ["Guest", "Ian"]:
-    userinterface = input("\nWhich user? \nIan \nGuest \n")
+    userinterface = input("\nWhich user? \nIan \nGuest \n").capitalize()
     makeaccount(userinterface, "Ian", "password", 1)
     if userinterface in ["Guest"]:
         print("Welcome!")
@@ -152,8 +152,8 @@ Which mathmatical symbol?
                     if loop == 0:
                         break
                     if loop > 0:
-                        choice2 = input("Are you done with your calculations? (Y/N) ")
-                        if choice2 == "yes":
+                        choice2 = input("Are you done with your calculations? (Y/N) ").capitalize()
+                        if choice2 == "Yes":
                             break
                         else: 
                             if choice != ["7", "√"]:
