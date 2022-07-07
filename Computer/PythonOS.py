@@ -11,7 +11,7 @@ def iof(number) -> int:
     return number
 
 
-def riddler(number:int, answer:str, riddle:str):
+def riddler(riddlechooser:random, riddles:list, number:int, answer:str, riddle:str):
     if riddlechooser == number:
         riddlea = None
         while riddlea != answer:
@@ -93,7 +93,7 @@ def calculate(x:int, y:int, operator:str) -> str:
 
 
 PyOS = ["Booting up PythonOS. \n", "Booting up PythonOS.. \n", "Booting up PythonOS... \n"]
-slow_type((PyOS[1] + PyOS[2] + PyOS[3]) * 3, 500)
+slow_type((PyOS[0] + PyOS[1] + PyOS[2]) * 3, 500)
 userinterface = ""
 while userinterface not in ["Guest", "Ian"]:
     userinterface = input("\nWhich user? \nIan \nGuest \n").capitalize()
@@ -217,10 +217,10 @@ Which mathmatical theorem?
                     while True:
                         riddlechooser = random.choice(riddles)
                         riddles = [1, 2, 3]
-                        riddler(1, riddleanswers[1], riddle[1])
-                        riddler(2, riddleanswers[2], riddle[2])
-                        riddler(3, riddleanswers[3], riddle[3])
-                        riddler(4, riddleanswers[4], riddle[4])
+                        riddler(riddlechooser, riddles, 1, riddleanswers[1], riddle[1])
+                        riddler(riddlechooser, riddles, 2, riddleanswers[2], riddle[2])
+                        riddler(riddlechooser, riddles, 3, riddleanswers[3], riddle[3])
+                        riddler(riddlechooser, riddles, 4, riddleanswers[4], riddle[4])
                         riddleyn = input('Want another riddle?')
                         if riddleyn in ['no', 'n']: 
                             print("Okay, see you later!")
