@@ -1,3 +1,3 @@
-# HEY THIS IS PRIVATE
-but if you want to help ask ZZ first which is me secondarygamer
-if any issues just report to ZZ using the issues part of github
+# HEY THIS C BRANCH
+This program is totally open sourced licening under GPL-V3.
+If you want to help me just fork it and push request.
