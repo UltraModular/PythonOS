@@ -2,6 +2,90 @@ import sys
 import time
 import random
 
+class MyTime:
+    def __init__(self, numbertime:int) -> str:
+        if numbertime == 1:
+            timed = time.time()
+        if numbertime == 2:
+            timed = time.localtime()
+        self.timed = timed
+        
+
+    # Gives you the time
+    def mTime(self, hourtime:int):
+        hour = self.timed[3]
+        minute = self.timed[4]
+        if minute < 10:
+            minute = f"0{minute}"
+        if hourtime == 1:
+            if hour == 0:
+                hour += 12
+            elif hour > 12:
+                return f"{str(hour - 12)}:{str(minute)} pm"
+            return f"{str(hour)}:{minute} am"
+        elif hourtime == 2:
+            return  f"{str(hour)}:{minute}"
+        else:
+            if hour == 0:
+                hour += 12
+            elif hour > 12:
+                return f"{str(hour - 12)}:{str(minute)} pm"
+            return f"{str(hour)}:{minute} am"
+
+
+    # Gives you the weekday
+    def mWeekDate(self):
+        weekdays = {
+            0: "Monday",
+            1: "Tuesday",
+            2: "Wednesday",
+            3: "Thursday",
+            4: "Friday",
+            5: "Saturday",
+            6: "Sunday"
+        }
+        weekday = self.timed[6]
+        return f"{weekdays[weekday]}"
+
+    # Gives you the date
+    def mDate(self):
+        year = self.timed[0]
+        month = self.timed[1]
+        day = self.timed[2]
+        return f"{day}/{month}/{year}"
+
+
+    # Gives you the amount of weeks that have passed since this year
+    def mWeeks(self):
+        weeks = self.timed[7]
+        return f"{round(weeks / 7)}"
+
+
+class CSpoken(MyTime):
+    def __init__(self, number:int):
+        super().__init__(number)
+        
+    
+    # Just gives the time as what would have been said by a person
+    def FTime(self, options:int):
+        return f"Today is {MyTime.mWeekDate(self)}, {MyTime.mDate(self)}. It is {MyTime.mTime(self, options)}."
+    
+    def SpokenTime(self, options:int):
+        return f"It is currently {MyTime.mTime(self, options)}."
+
+    def Date(self):
+        return f"Today is {MyTime.mDate(self)}." 
+
+    def WDate(self):
+        return f"Today is {MyTime.mWeekDate(self)}."
+
+    def Week(self):
+        if self.options in ["", 1]:
+            return f"Week {MyTime.mWeeks(self)}."
+        if self.options == 2:
+            return f"It is Week {MyTime.mWeeks(self)}."
+
+
 def iof(number) -> int:
     y = isinstance(number, float)
     if y != True:
@@ -41,18 +125,19 @@ def slow_type(text:str, speed:int) -> str:
         time.sleep(random.random()*10.0/speed)
 
 
-def makeaccount(userinterface , user:str, password:str, extra:int):
-    if userinterface in [user]:
+def makeaccount(userinterface, logins:dict, extra:int):
+    keys = logins.keys()
+    if userinterface in keys:
         password3 = None
         attempts = []
         password2 = 3
         if extra == 2 or extra == 12:
-            if user == "Ian":
+            if userinterface == "Ian":
                 hint = ""
-        while password3 != password:
+        while password3 != logins[userinterface]:
             password3 = input("Enter the password: ")
             attempts.append(password3)
-            if password3 != password:
+            if password3 != logins[userinterface]:
                 if extra == 1 or extra == 12:
                     password2 -= 1
                     print(f"Attempts remaning: {password2}")
@@ -64,45 +149,57 @@ def makeaccount(userinterface , user:str, password:str, extra:int):
                     print(a)
             if extra == 1 or extra == 12:
                 if password2 == 0:
-                    print(f"You are not {user}. Goodbye.")
+                    print(f"You are not {userinterface}. Goodbye.")
                     quit()
-        print("Correct password. Welcome back!")
+        if userinterface != "Guest":
+            print("Correct password. Welcome back!")
+        else: 
+            print("Welcome to PythonOS!")
 
 
 def calculate(x:int, y:int, operator:str) -> str:
     # calculates
-    if operator in "+":
-        sum = x + y
-    elif operator in "-":
-        sum = x - y
-    elif operator in "*":
-        sum = x * y
-    elif operator == "/":
-        sum = x / y
+    match operator:
+        case ["+"]:
+            sum = x + y
+        case ["-"]:
+            sum = x - y
+        case ["*"]:
+            sum = x * y
+        case ["/"]:
+            sum = x / y
     if operator in ["+", "-", "*", "/"]:
         return f'{x} {operator} {y} = {sum}'
-    elif choice in ["5", "%"]:
-        sum = 100 * x / y
-        return f'{x}% of {y} is {sum}'
-    elif choice in ["6", "^"]:
-        sum = x ** y
-        return f'{x} raised to the power of {y} = {sum}'
-    elif choice in ["7", "√"]:
-        sum = iof(x ** 0.5)
-        return f'The square root of {x} = {sum}'
+    match operator:
+        case ["5", "%"]:
+            sum = 100 * x / y
+            return f'{x}% of {y} is {sum}'
+        case ["6", "^"]:
+            sum = x ** y
+            return f'{x} raised to the power of {y} = {sum}'
+        case ["7", "√"]:
+            sum = iof(x ** 0.5)
+            return f'The square root of {x} = {sum}'
 
+loginbook = {
+    # "User" : "Password"
+    "Ian" : "password",
+    "Guest" : None
+}
 
 PyOS = ["Booting up PythonOS. \n", "Booting up PythonOS.. \n", "Booting up PythonOS... \n"]
 slow_type((PyOS[0] + PyOS[1] + PyOS[2]) * 3, 500)
 userinterface = ""
 while userinterface not in ["Guest", "Ian"]:
-    userinterface = input("\nWhich user? \nIan \nGuest \n").capitalize()
-    makeaccount(userinterface, "Ian", "password", 1)
-    if userinterface in ["Guest"]:
-        print("Welcome!")
-    elif userinterface not in ["Guest", "Ian"]:
-        print(f"There is no user called {userinterface}")
+    userinterface = str(input("\nWhich user? \nIan \nGuest \n")).capitalize()
+    try:
+        makeaccount(userinterface, loginbook, 1)
+    except TypeError:
+        print(f"There is no user called {userinterface}.")
 while True:
+    timed = CSpoken(2)
+    print("Welcome")
+    print(timed.FTime(1))
     program = input('''
 Which program? 
 1. Math 
