@@ -211,13 +211,14 @@ Exit?\n''').capitalize()
             elif mathcheck in ["Geometric", "Angles"]:
                 print("Hello. This is an Angles Calculator with Turtle. Check your other window to see results.")
                 calangle = int(input('''
-Which mathmatical theorem?
+Which kind of angle?
 ( **put numbers only** )
-1 = Pythagoras
-2 =\n'''))
+1 = Right Angle Triangles\n'''))
                 if calangle == 1:
-                    angnum1, angnum2 = iof(input("Input the first side: ")), iof(input("Input the second side: "))
-                    print(calculateang(angnum1, angnum2, 1))
+                    calchoice = int(input('''
+Which kind of formula?
+1 = Pythagoras
+2 = SohCahToa'''))
             elif mathcheck == "Programmer":
                 pass
             elif mathcheck == "Quit": break

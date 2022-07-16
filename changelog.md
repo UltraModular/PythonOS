@@ -39,12 +39,14 @@
 - [x] dt settings
 - [x] dt rerouted
 
-# roadmap
-
 ## Breath of Fresh Air Updates
 ### Ver. 0.2.2 The Breath of Fresh Air Upgrade PART 1
+- [x] tweaked modules
+- [x] tweaked loginbook
+- [x] tweaked riddles
+- [x] tweaked calculator a bit
+- [x] fixed iof module
+- [x] added time
 - [ ] tweaked paint to make user-friendly
 - [ ] added TicTacToe two player
 - [ ] added more math
-- [x] tweaked modules
-- [ ] added time
