@@ -1,5 +1,5 @@
 import time
-import random
+from random import randint
 
 # Tell the time
 class MyTime:
@@ -55,11 +55,9 @@ class MyTime:
 
 # Tell the time (like a human being)
 class CSpoken(MyTime):
-    def __init__(self, number:int=2):
+    def __init__(self, number:int=2) -> str:
         super().__init__(number)
         
-    
-    # Just gives the time as what would have been said by a person
     def FSpokenTime(self, options:int=1):
         return f"Today is {MyTime.mWeekDate(self)}, {MyTime.mDate(self)}. It is {MyTime.mTime(self, options)}."
     
@@ -78,16 +76,9 @@ class CSpoken(MyTime):
         if options == 2:
             return f"It is Week {MyTime.mWeeks(self)}."
 
-# just returns integer or float lmao
-def iof(number) -> int:
-    y = isinstance(number, float)
-    if y != True: number = int(number)
-    else: number = float(number)
-    return number
-
 # delaying the amount in the list to be print
-def delaysleepl(list:list, howmuch:int, howlong:float):
-    for i in range(howmuch):
+def delaysleepl(list:list, howmuch:int, howlong:float) -> str:
+    for long in range(howmuch):
         x = 0
         for items in list:
             print(list[x])
@@ -112,42 +103,46 @@ def makeaccount(userinterface, logins:dict):
         else: 
             print("\nWelcome to PythonOS!")
 
-# used for calculating
-def calculate(x:int, y:int, operator:str) -> str:
-    # calculates
-    if operator in ["+"]: sum = x + y
-    elif operator in ["-"]: sum = x - y
-    elif operator in ["*"]: sum = x * y
-    elif operator in ["/"]: sum = x / y
-    if operator in ["+", "-", "*", "/"]: return f'\n{x} {operator} {y} = {sum}'
-    elif operator in ["5", "%"]:
-        sum = 100 * x / y
-        return f'\n{x}% of {y} is {sum}'
-    elif operator in ["6", "^"]:
-        sum = x ** y
-        return f'\n{x} raised to the power of {y} = {sum}'
-    elif operator in ["7", "√"]:
-        sum = iof(x ** 0.5)
-        return f'\nThe square root of {x} = {sum}'
+# just returns integer or float from float lmao
+def iof(number:float) -> int | float:
+    number = float(number)
+    y = number.is_integer()
+    if y: number = int(number)
+    return number
+
+# calculates into int or float
+def calculation(x:int | float, y:int | float, operator:str) -> int | float:
+    if operator in ["+"]: sumd = iof(x + y)
+    elif operator in ["-"]: sumd = iof(x - y)
+    elif operator in ["*"]: sumd = iof(x * y)
+    elif operator in ["/"]: sumd = iof(x / y)
+    elif operator in ["%"]: sumd = iof(100 * x / y)
+    elif operator in ["^"]: sumd = iof(x ** y)
+    elif operator in ["√"]: sumd = iof(x ** 0.5)
+    return sumd
+
+# calculates into string
+def calculate(x:int | float, y:int | float, operator:str) -> str:
+    sumd = calculation(x, y, operator)
+    if operator in ["+", "-", "*", "/"]: return f'\n{x} {operator} {y} = {sumd}'
+    elif operator in ["%"]: return f'\n{x}% of {y} is {sumd}'
+    elif operator in ["^"]: return f'\n{x} raised to the power of {y} = {sumd}'
+    elif operator in ["√"]: return f'\nThe square root of {x} is {sumd}'
 
 # used for calculating angles (+ turtle)
-def calculateang(a, b, formula) -> str:
+def calculateang(a: int | float, b: int | float, formula:int) -> str:
     if formula == 1:
-        sum = a ** 2 + b ** 2
-        sum **= 2
-        a /= 10
-        b /= 10
-        return f"formula = a^2 + b^2 = c^2\n{sum} = ({a}^2 + {b}^2)^2"
+        sumd = a ** 2 + b ** 2
+        sumd **= 2
+        return f"Pythagoras Formula: a^2 + b^2 = c^2\n{sumd} = ({a}^2 + {b}^2)^2"
     if formula == 2: pass
 
 # used for riddle game
 def riddler(riddles:dict, howmany:int=None):
     if howmany == None:
         howmany = len(riddles.keys()) - 1
-    riddlechooser = random.randint(0, howmany)
+    riddlechooser = randint(0, howmany)
     riddlea, riddleb, riddlec = None, list(riddles.values()), list(riddles.keys())
-    print(riddlec)
-    print(riddleb)
     while riddlea != riddleb[riddlechooser]:
         riddlea = input(riddlec[riddlechooser]).capitalize()
         if riddlea == riddleb[riddlechooser]:
@@ -158,7 +153,6 @@ def riddler(riddles:dict, howmany:int=None):
 PyOS = ["Booting up PythonOS.", "Booting up PythonOS..", "Booting up PythonOS..."]
 delaysleepl(PyOS, 3, 0.5)
 print("Booted up!")
-
 # Login framework
 loginbook = { # "User" : "Password"
     "Guest" : None, "Ian" : "password" }
@@ -166,18 +160,16 @@ logonbook, userinterface = list(loginbook.keys()), None
 print()
 while userinterface not in logonbook:
     print("Users:")
-    for i in logonbook:
-        print(f"{i}")
+    for i in logonbook: print(f"{i}")
     userinterface = str(input("\nWhich user? \n")).capitalize()
     makeaccount(userinterface, loginbook)
-    if userinterface not in logonbook: print(f"There is no user called {userinterface}.")
+    if userinterface not in logonbook: print(f"There is no user called {userinterface}.\n")
 programtime = CSpoken(2)
 print(programtime.FSpokenTime(1))
 
 # Main framework
 while True:
-    program = input('''
-Which program? 
+    program = input('''Which program? 
 1. Math 
 2. PaintINDEV 
 3. GamesIndev 
@@ -190,8 +182,9 @@ Exit?\n''').capitalize()
                 mathmatical, calnum2 = [None, "+", "-", "*", "/", "%", "^", "√"], None
                 print("\nHello. This is a Calculator.")
                 loop = int(input("How many times do you want to loop the program? "))
-                calnum1 = iof(input("Put the first number here: \n"))
                 for i in range(loop):
+                    if calnum2 == None:
+                        calnum1 = iof(input("Put the first number here: \n"))
                     choice = str(input(f'''Which mathmatical symbol?
 (+ = 1, - = 2, * = 3, / = 4)
 (% = 5, ^ = 6, √ = 7)\n'''))
@@ -201,9 +194,8 @@ Exit?\n''').capitalize()
                     elif choice == "^": calnum2 = iof(input(f"{calnum1} raised to the power of: "))
                     elif choice == "√": pass
                     elif choice not in ["√", "%"]: calnum2 = iof(input(f"{calnum1} {choice} "))
-                    else:
-                        print("um put the right numbers next time")
-                        break
+                    else: raise ValueError("um put the right numbers next time")
+                    sumd = calculation(calnum1, calnum2, choice)
                     print(calculate(calnum1, calnum2, choice))
                     loop -= 1
                     if loop == 0: break
@@ -211,7 +203,10 @@ Exit?\n''').capitalize()
                         choice2 = input("Are you done with your calculations? (Y/N)\n").capitalize()
                         if choice2 in ["Yes", "Y"]: break
                         else: 
-                            if choice != ["7", "√"]: calnum1 = sum
+                            if choice != "√": 
+                                choose = input("Do you want to keep the sum as the first number?\n").capitalize()
+                                if choose in ["Y", "Yes"]: calnum1 = sumd
+                                else: calnum2 = None
                             print(f"Amount of loops left: {loop}\n")
             elif mathcheck in ["Geometric", "Angles"]:
                 print("Hello. This is an Angles Calculator with Turtle. Check your other window to see results.")
@@ -232,7 +227,6 @@ Which mathmatical theorem?
         while True:
             paintinput = input("Start? (Y/N) ")
             if paintinput in ["yes", "Yes"]:
-                print("Sorry no")
                 break
             elif paintinput in ["no", "No", "n", "N"]: break
             else: print("I'm sorry I do not understand.")
@@ -273,25 +267,23 @@ Game No.'''))
             if gameinput == 3:
                 gagenre = input('''
 Which genre?
-Adventure
-''')
+Adventure\n''')
                 if gagenre in ["Adventure", "adventure"]: pass
             elif gameinput not in [1, 2, 3]:
                 print("I'm sorry I do not understand")
     elif program in ["Other programs", "Programs", "4"]:
-        print("Which program?")
-        inputprogram = int(input())
-        if inputprogram in ["1"]: input()
+        inputprogram = int(input("Which program?\n"))
+        if inputprogram == 1: input()
     elif program in ["Settings", "4"]:
-            settings = input("What settings?")
-            if settings in ["time", "Time"]:
-                settingsdt = input("What do you want to change?")
-                if settingsdt in ["datatime"]:
-                    datatimesettings1 = True
-            elif settingsdt in ["exit", "Exit"]:
-                break
-            if settings in ["help", "Help"]:
-                print("dt: sets the time of the computer")
+        while True:
+            settings = input("What settings?").capitalize()
+            if settings == "Time":
+                settingsdt = input("What do you want to change?").capitalize()
+                if settingsdt == "datatime":
+                    pass
+                elif settingsdt == "Exit": break
+            elif settings == "Help": print("dt: sets the time of the computer")
+            elif settings == "Quit": break
     elif program in ["Shut down", "Quit", "Stop", "Exit"]: break # Quits
     else: print(f"I'm sorry. I do not understand this command: {program}")
 print("Goodbye!")
