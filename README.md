@@ -8,3 +8,6 @@ a simple project by a small group of aspiring developers (mainly me at the momen
 - LOGIN SCREEN
 - CALCULATOR
 - GAMES (RIDDLES)
+
+## Links:
+[Changelog](https://github.com/Modularizable/PythonOS/blob/main/changelog.md) |
