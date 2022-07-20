@@ -47,6 +47,5 @@
 - [x] tweaked calculator a bit
 - [x] fixed iof module
 - [x] added time
-- [ ] tweaked paint to make user-friendly
-- [ ] added TicTacToe two player
-- [ ] added more math
+- [x] added more math (fibonacci and logrithim)
+- [x] made everything compacted (for no reason at all)
