@@ -11,5 +11,5 @@ a simple project by a small group of aspiring developers (mainly me at the momen
 
 ## Links:
 [Changelog](https://github.com/Modularizable/PythonOS/blob/main/changelog.md) |
-[C Version](https://github.com/Modularizable/PythonOS/blob/program-c/Computer/COS.c) |
+[C Version](https://github.com/Modularizable/PythonOS/blob/program-c) |
 [Website](https://github.com/Modularizable/PythonOS)
