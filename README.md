@@ -1,4 +1,4 @@
-# PythonOS
+# PythonOS1
 a simple project by a small group of aspiring developers (mainly me at the moment).
 
 ## DISCLAIMER 
