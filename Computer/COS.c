@@ -3,9 +3,7 @@
 #include <stdlib.h>
 int main(void) {
 
-	printf("Booting up COS.\n");
-	printf("Booting up COS..\n");
-	printf("Booting up COS...\n");
+	printf("Booting up COS.\nBooting up COS..\nBooting up COS...\n");
 	printf("Booting up COS.\n");
 	printf("Booting up COS..\n");
 	printf("Booting up COS...\n");
