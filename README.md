@@ -2,7 +2,7 @@
 a simple project by a small group of aspiring developers (mainly me at the moment).
 
 ## DISCLAIMER 
-__**Not a real Operating System, it is just a program of programs.**__
+<b><u>Not a real Operating System, it is just a program of programs.</u></b>
 
 ## WORKING AT THE MOMENT:
 - LOGIN SCREEN
